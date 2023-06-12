@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 11, 2023 at 12:08 AM
+-- Generation Time: Jun 13, 2023 at 01:27 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -31,10 +31,67 @@ CREATE TABLE `logs` (
   `id` int(11) NOT NULL,
   `userId` int(10) UNSIGNED DEFAULT NULL,
   `email` varchar(64) DEFAULT NULL,
-  `status` tinyint(1) NOT NULL,
+  `status` tinyint(10) NOT NULL,
   `IPAddress` varchar(15) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`id`, `userId`, `email`, `status`, `IPAddress`, `createdAt`) VALUES
+(1, 3, 'admin@admin.pl', 1, '127.0.0.1', '2023-06-12 23:07:24'),
+(2, NULL, 'top@op.lok', 3, '127.0.0.1', '2023-06-12 23:07:55'),
+(3, NULL, 'top@op.lok', 5, '127.0.0.1', '2023-06-12 23:08:24'),
+(4, NULL, NULL, 9, '127.0.0.1', '2023-06-12 23:08:27'),
+(5, 3, 'admin@admin.pl', 1, '127.0.0.1', '2023-06-12 23:10:57'),
+(7, NULL, NULL, 9, '127.0.0.1', '2023-06-12 23:10:59'),
+(8, 3, 'admin@admin.pl', 1, '127.0.0.1', '2023-06-12 23:11:42'),
+(10, NULL, NULL, 9, '127.0.0.1', '2023-06-12 23:11:47'),
+(11, 3, 'admin@admin.pl', 1, '127.0.0.1', '2023-06-12 23:15:00'),
+(13, NULL, NULL, 9, '127.0.0.1', '2023-06-12 23:15:03'),
+(14, 3, 'admin@admin.pl', 1, '127.0.0.1', '2023-06-12 23:16:32'),
+(16, NULL, NULL, 9, '127.0.0.1', '2023-06-12 23:16:50'),
+(17, 3, 'admin@admin.pl', 1, '127.0.0.1', '2023-06-12 23:19:28'),
+(19, NULL, NULL, 9, '127.0.0.1', '2023-06-12 23:19:30'),
+(20, 3, 'admin@admin.pl', 1, '127.0.0.1', '2023-06-12 23:21:05'),
+(22, NULL, NULL, 9, '127.0.0.1', '2023-06-12 23:21:07'),
+(23, 3, 'admin@admin.pl', 1, '127.0.0.1', '2023-06-12 23:23:17'),
+(25, NULL, NULL, 9, '127.0.0.1', '2023-06-12 23:23:20'),
+(26, 3, 'admin@admin.pl', 1, '127.0.0.1', '2023-06-12 23:24:34'),
+(27, NULL, 'fds', 7, '127.0.0.1', '2023-06-12 23:24:36'),
+(28, NULL, 'admin@admin.plp', 3, '127.0.0.1', '2023-06-12 23:25:25'),
+(29, NULL, 'admin@admin.plp', 5, '127.0.0.1', '2023-06-12 23:25:40'),
+(30, NULL, 'admin@admin.plp', 7, '127.0.0.1', '2023-06-12 23:25:43'),
+(31, 3, 'admin@admin.pl', 1, '127.0.0.1', '2023-06-12 23:26:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logs_type`
+--
+
+CREATE TABLE `logs_type` (
+  `id` tinyint(10) NOT NULL,
+  `type` enum('logged','not logged','registered','not registered','updated','not updated','deleted','not deleted','error','unknown') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `logs_type`
+--
+
+INSERT INTO `logs_type` (`id`, `type`) VALUES
+(1, 'logged'),
+(2, 'not logged'),
+(3, 'registered'),
+(4, 'not registered'),
+(5, 'updated'),
+(6, 'not updated'),
+(7, 'deleted'),
+(8, 'not deleted'),
+(9, 'error'),
+(10, 'unknown');
 
 -- --------------------------------------------------------
 
@@ -79,8 +136,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `permissionId`, `email`, `firstName`, `lastName`, `birthday`, `password`, `createdAt`, `image`) VALUES
-(3, 3, 'test@test.test', 'test', 'test', '2023-06-10', '$2y$10$JQfV.lwRoCRyCDJYFifUpOlO6sBVq6UYGSRndh/JxEeVcLaBBdmwa', '2023-06-10 22:10:20', NULL),
-(5, 1, 'tester@test.test', 'test', 'test', '2023-06-10', '$2y$10$DB6Vq1Kf0BEV5GQodQQN8O4wWGrxcmMm6ugqWnnypMXmMqVcviza6', '2023-06-10 22:25:07', NULL);
+(3, 3, 'admin@admin.pl', 'Kamil', 'Purcel', '2023-06-10', '$2y$10$JQfV.lwRoCRyCDJYFifUpOlO6sBVq6UYGSRndh/JxEeVcLaBBdmwa', '2023-06-10 22:10:20', '2.jpg'),
+(5, 1, 'tester@test.test', 'test', 'test', '2023-06-10', '$2y$10$DB6Vq1Kf0BEV5GQodQQN8O4wWGrxcmMm6ugqWnnypMXmMqVcviza6', '2023-06-10 22:25:07', '1.jpg');
 
 --
 -- Indexes for dumped tables
@@ -91,7 +148,14 @@ INSERT INTO `users` (`id`, `permissionId`, `email`, `firstName`, `lastName`, `bi
 --
 ALTER TABLE `logs`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `userId` (`userId`);
+  ADD KEY `userId` (`userId`),
+  ADD KEY `status` (`status`);
+
+--
+-- Indexes for table `logs_type`
+--
+ALTER TABLE `logs_type`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `permissions`
@@ -114,7 +178,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `logs_type`
+--
+ALTER TABLE `logs_type`
+  MODIFY `id` tinyint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -126,7 +196,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Constraints for dumped tables
@@ -136,7 +206,8 @@ ALTER TABLE `users`
 -- Constraints for table `logs`
 --
 ALTER TABLE `logs`
-  ADD CONSTRAINT `logs_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `logs_ibfk_1` FOREIGN KEY (`status`) REFERENCES `logs_type` (`id`),
+  ADD CONSTRAINT `logs_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `users`

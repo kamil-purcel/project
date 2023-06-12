@@ -35,8 +35,14 @@ if ($result->num_rows != 0) {
     $error = 1;
     $_SESSION["error"] = "The email has already been taken!<br>";
 }
+$ipAddress = $_SERVER["REMOTE_ADDR"];
 
 if ($error != 0) {
+    $status = 4;
+    $sql = "INSERT INTO logs (email, status, IPAddress) VALUES (?, ?, ?);";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $_POST["email"], $status, $ipAddress);
+    $stmt->execute();
     echo "<script>history.back();</script>";
     exit();
 }
@@ -52,11 +58,41 @@ try {
     $stmt->execute();
 
     if ($stmt->affected_rows == 1) {
-        $_SESSION["success"] = "The user $_POST[firstName] $_POST[lastName] has been added";
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email=?");
+        $stmt->bind_param("s", $_POST["email"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+
+        if ($result->num_rows != 0) {
+            $status = 3;
+            $sql = "INSERT INTO logs (userId, email, status, IPAddress) VALUES (?,?, ?, ?);";
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bind_param("isss", $user["id"], $user["email"], $status, $ipAddress);
+            $stmt->execute();
+        $_SESSION["success"] = "The user $_POST[firstName] $_POST[lastName] has been added";} else {
+            $status = 4;
+            $sql = "INSERT INTO logs (email, status, IPAddress) VALUES (?, ?, ?);";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sss", $_POST["email"], $status, $ipAddress);
+            $stmt->execute();
+            $_SESSION["error"] = "Failed to add user!";
+        }
     } else {
+        $status = 4;
+        $sql = "INSERT INTO logs (email, status, IPAddress) VALUES (?, ?, ?);";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sss", $_POST["email"], $status, $ipAddress);
+        $stmt->execute();
         $_SESSION["error"] = "Failed to add user!";
     }
 } catch (mysqli_sql_exception $error) {
+    $status = 9;
+    $sql = "INSERT INTO logs (status, IPAddress) VALUES ( ?, ?);";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $status, $ipAddress);
+    $stmt->execute();
     $_SESSION["error"] = $error->getMessage();
     echo "<script>history.back();</script>";
     exit();

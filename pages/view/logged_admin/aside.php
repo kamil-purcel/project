@@ -35,6 +35,12 @@ if (!isset($_SESSION["logged"]) || session_status() != 2) {
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="./logged.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Users list</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="./logged_admin/add_user.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add user</p>
@@ -43,7 +49,7 @@ if (!isset($_SESSION["logged"]) || session_status() != 2) {
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="./logs.php" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Logs</p>
                     </a>

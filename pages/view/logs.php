@@ -60,7 +60,7 @@ if (isset($_SESSION["logged"]["lastActivity"])) {
     require_once "./$permissionId/navbar.php";
     require_once "./$permissionId/aside.php";
 
-    require_once "./$permissionId/content_main.php";
+    require_once "./$permissionId/content_logs.php";
 
     require_once "./footer.php";
     ?>

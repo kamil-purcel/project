@@ -38,8 +38,15 @@ if (empty($_POST["birthday"])) {
     $error = 1;
     $_SESSION["error"] .= "Birthday cannot be empty!<br>";
 }
+$ipAddress = $_SERVER["REMOTE_ADDR"];
 
 if ($error != 0) {
+    $status = 6;
+    $sql = "INSERT INTO logs (userId, email, status, IPAddress) VALUES (?,?, ?, ?);";
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bind_param("isss", $_POST["userId"], $_POST["email"], $status, $ipAddress);
+    $stmt->execute();
     echo "<script>history.back();</script>";
     exit();
 }
@@ -52,8 +59,24 @@ try {
     $stmt->execute();
 
     if ($stmt->affected_rows == 1) {
+        if (empty($_POST["password"])) {
+            $status = 5;
+            $sql = "INSERT INTO logs (userId, email, status, IPAddress) VALUES (?,?, ?, ?);";
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bind_param("isss", $_POST["userId"], $_POST["email"], $status, $ipAddress);
+            $stmt->execute();
+        }
         $_SESSION["success"] = "The user $_POST[firstName] $_POST[lastName] has been updated";
     } else {
+        if (empty($_POST["password"])) {
+            $status = 6;
+            $sql = "INSERT INTO logs (userId, email, status, IPAddress) VALUES (?,?, ?, ?);";
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bind_param("isss", $_POST["userId"], $_POST["email"], $status, $ipAddress);
+            $stmt->execute();
+        }
         $_SESSION["error"] = "Failed to update user!";
     }
 
@@ -68,13 +91,30 @@ try {
         $stmt->bind_param("s", $pass);
         $stmt->execute();
         if ($stmt->affected_rows == 1) {
+            $status = 5;
+            $sql = "INSERT INTO logs (userId, email, status, IPAddress) VALUES (?,?, ?, ?);";
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bind_param("isss", $_POST["userId"], $_POST["email"], $status, $ipAddress);
+            $stmt->execute();
             $_SESSION["success"] = "The user $_POST[firstName] $_POST[lastName] has been updated";
             unset($_SESSION["error"]);
         } else {
+            $status = 6;
+            $sql = "INSERT INTO logs (userId, email, status, IPAddress) VALUES (?,?, ?, ?);";
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bind_param("isss", $_POST["userId"], $_POST["email"], $status, $ipAddress);
+            $stmt->execute();
             $_SESSION["error"] = "Failed to update user!";
         }
     }
 } catch (mysqli_sql_exception $error) {
+    $status = 9;
+    $sql = "INSERT INTO logs (status, IPAddress) VALUES ( ?, ?);";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $status, $ipAddress);
+    $stmt->execute();
     $_SESSION["error"] = $error->getMessage();
     echo "<script>history.back();</script>";
     exit();
