@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    header("location: ../pages");
+    header("location: ../pages/forgot-password.php");
 }
 ?>
 <!DOCTYPE html>
