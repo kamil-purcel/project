@@ -8,7 +8,7 @@ if (!isset($_SESSION["logged"]) || session_status() != 2) {
 if (isset($_SESSION["logged"]["lastActivity"])) {
     $lastActivityTime = $_SESSION["logged"]["lastActivity"];
     $currentTime = time();
-    $sessionTimeout = 30;
+    $sessionTimeout = 60;
 
     if ($currentTime - $lastActivityTime > $sessionTimeout) {
         $_SESSION["error"] = "Session has expired!";

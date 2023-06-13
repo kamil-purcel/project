@@ -8,7 +8,7 @@ if (!isset($_SESSION["logged"]) || session_status() != 2) {
 if (isset($_SESSION["logged"]["lastActivity"])) {
     $lastActivityTime = $_SESSION["logged"]["lastActivity"];
     $currentTime = time();
-    $sessionTimeout = 30;
+    $sessionTimeout = 60;
 
     if ($currentTime - $lastActivityTime > $sessionTimeout) {
         $_SESSION["error"] = "Session has expired!";
@@ -131,7 +131,15 @@ Pages
                         </div>
                     </div>
                 </div>
-
+Image
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Image" name="image" value="$book[image]">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-icons"></span>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-8">

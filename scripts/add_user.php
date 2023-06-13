@@ -48,13 +48,13 @@ if ($error != 0) {
 }
 
 try {
-    $stmt = $conn->prepare("INSERT INTO users (email, firstName, lastName, birthday, password, createdAt, image) VALUES (?, ?, ?, ?, ?, current_timestamp(), ?);");
+    $stmt = $conn->prepare("INSERT INTO users (email, firstName, lastName, birthday, password, createdAt, image, permissionId) VALUES (?, ?, ?, ?, ?, current_timestamp(), ?, ?);");
     if (defined('PASSWORD_ARGON2ID')) {
         $pass = password_hash($_POST["password"], PASSWORD_ARGON2ID);
     } else {
         $pass = password_hash($_POST["password"], PASSWORD_DEFAULT);
     }
-    $stmt->bind_param("ssssss", $_POST["email"], $_POST["firstName"], $_POST["lastName"], $_POST["birthday"], $pass, $_POST["image"]);
+    $stmt->bind_param("ssssssi", $_POST["email"], $_POST["firstName"], $_POST["lastName"], $_POST["birthday"], $pass, $_POST["image"], $_POST["permissionId"]);
     $stmt->execute();
 
     if ($stmt->affected_rows == 1) {

@@ -24,7 +24,7 @@ if (!isset($_SESSION["logged"]) || session_status() != 2) {
 if (isset($_SESSION["logged"]["lastActivity"])) {
     $lastActivityTime = $_SESSION["logged"]["lastActivity"];
     $currentTime = time();
-    $sessionTimeout = 30;
+    $sessionTimeout = 60;
 
     if ($currentTime - $lastActivityTime > $sessionTimeout) {
         $_SESSION["error"] = "Session has expired!";
@@ -50,7 +50,7 @@ if (isset($_SESSION["logged"]["lastActivity"])) {
     <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
-    <link rel="stylesheet" href="../../dist/css/myFrom.css">
+    <link rel="stylesheet" href="../../dist/css/myStyle.css">
 
 
 </head>
@@ -67,6 +67,8 @@ if (isset($_SESSION["logged"]["lastActivity"])) {
 </div>
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <script src="../../dist/js/adminlte.js"></script>
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
 <!-- DataTables  & Plugins -->
 <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>

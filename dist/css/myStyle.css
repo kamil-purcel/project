@@ -1,0 +1,61 @@
+.chatForm {
+    float: left;
+}
+.chatForm, .declineForm {
+    display: inline-block; /* or inline */
+}
+
+.chatForm_1{
+    width: 100%;
+}
+.users-list-my {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.users-list-my>li {
+    padding: 10px;
+    text-align: center;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.users-list-my>li img {
+    border-radius: 10%;
+    height: auto;
+    max-width: 100%;
+}
+
+.users-list-my>li>a:hover,
+.users-list-my>li>a:hover .users-list-name-my {
+    color: #999;
+}
+
+.users-list-date-my,
+.users-list-name-my {
+    display: block;
+}
+
+.users-list-name-my {
+    color: #495057;
+    font-size: .875rem;
+    overflow-wrap: break-word;
+}
+
+.users-list-date-my {
+    color: #748290;
+    font-size: 12px;
+}
+
+.dark-mode .users-list-name-my {
+    color: #ced4da;
+}
+
+.dark-mode .users-list-date-my {
+    color: #adb5bd;
+}
