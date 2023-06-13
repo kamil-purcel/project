@@ -19,6 +19,9 @@ if (!isset($_SESSION["logged"]) || session_status() != 2) {
     if (isset($_SESSION["editUserId"])) {
         unset($_SESSION["editUserId"]);
     }
+    if (isset($_SESSION["editBookIsbn"])) {
+        unset($_SESSION["editBookIsbn"]);
+    }
 }
 
 if (isset($_SESSION["logged"]["lastActivity"])) {

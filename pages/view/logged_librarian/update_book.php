@@ -52,100 +52,104 @@ ERROR;
             <h1><b>Edit user</b></h1>
         </div>
         <div class="card-body">
-            <form action="../../../scripts/add_user.php" method="post">
-                First name
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="First name" name="firstName">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
-                        </div>
-                    </div>
-                </div>
-                Last name
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Last name" name="lastName">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
-                        </div>
-                    </div>
-                </div>
-                Email
-                <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Email" name="email">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
-                        </div>
-                    </div>
-                </div>
-                Password
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password" name="password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                Password (confirm)
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password (confirm)" name="re-password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                Permission
-                <div class="input-group mb-3">
-                    <select class="custom-select" name="permissionId">
-                        <?php
-                        require_once "../../../scripts/connect.php";
-                        $sql = "SELECT * FROM permissions";
-                        $result = $conn->query($sql);
-                        while ($city = $result->fetch_assoc()) {
-                            echo "<option value='$city[id]'>$city[permission]</option>";
-                        }
-                        ?>
-                    </select>
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-unlock"></span>
-                        </div>
-                    </div>
-                </div>
 
-                Image
+            <?php
+
+            require_once "../../../scripts/connect.php";
+
+            try {
+                $stmt = $conn->prepare("SELECT * FROM books WHERE isbn=?");
+                $stmt->bind_param("s", $_SESSION["editBookIsbn"]);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $book = $result->fetch_assoc();
+
+                if ($result->num_rows != 0) {
+                    echo <<< UPDATEBOOKFORM
+            <form action="../../../scripts/update_book.php" method="post">
+ISBN
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Image" name="image">
+                    <input type="text" class="form-control" placeholder="ISBN" name="isbn" value="$book[isbn]">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-icons"></span>
+                            <span class="fas fa-book"></span>
                         </div>
                     </div>
                 </div>
-                Birthday
+Title
                 <div class="input-group mb-3">
-                    <input type="date" class="form-control" name="birthday">
+                    <input type="text" class="form-control" placeholder="Title" name="title" value="$book[title]">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-book"></span>
+                        </div>
+                    </div>
+                </div>
+Authors
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Authors" name="authors" value="$book[authors]">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user-friends"></span>
+                        </div>
+                    </div>
+                </div>
+Publisher
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Publisher" name="publisher" value="$book[publisher]">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user-friends"></span>
+                        </div>
+                    </div>
+                </div>
+Published Date
+                <div class="input-group mb-3">
+                    <input type="date" class="form-control" name="published_date" value="$book[published_date]">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-calendar"></span>
                         </div>
                     </div>
                 </div>
+Category
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Category" name="category" value="$book[category]">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-icons"></span>
+                        </div>
+                    </div>
+                </div>
+Pages
+                <div class="input-group mb-3">
+                
+                    <input type="text" class="form-control" placeholder="Pages" name="pages" value="$book[pages]">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-book-open"></span>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="row">
                     <div class="col-8">
                     </div>
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Add</button>
+                        <button type="submit" class="btn btn-primary btn-block">Update</button>
                     </div>
                 </div>
             </form>
+UPDATEBOOKFORM;
+                }
+            } catch (mysqli_sql_exception $error) {
+                $_SESSION["error"] = $error->getMessage();
+                echo "<script>history.go(-2);</script>";
+                exit();
+            }
+            ?>
             <a href="../logged.php" class="text-center">Discard changes</a>
-
         </div>
     </div>
 </div>

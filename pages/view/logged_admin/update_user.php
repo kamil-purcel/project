@@ -68,6 +68,7 @@ ERROR;
                     echo <<< UPDATEUSERFORM
             <form action="../../../scripts/update_user.php" method="post">
             <input type="hidden" name="userId" value="$user[id]">
+First name
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="First name" name="firstName" value="$user[firstName]">
                     <div class="input-group-append">
@@ -76,7 +77,7 @@ ERROR;
                         </div>
                     </div>
                 </div>
-
+Last name
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Last name" name="lastName" value="$user[lastName]">
                     <div class="input-group-append">
@@ -85,7 +86,7 @@ ERROR;
                         </div>
                     </div>
                 </div>
-
+Email
                 <div class="input-group mb-3">
                     <input type="email" class="form-control" placeholder="Email" name="email" value="$user[email]">
                     <div class="input-group-append">
@@ -94,7 +95,7 @@ ERROR;
                         </div>
                     </div>
                 </div>
-
+Password
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" placeholder="Password" name="password">
                     <div class="input-group-append">
@@ -103,14 +104,18 @@ ERROR;
                         </div>
                     </div>
                 </div>
-
+Permission
         <div class="input-group mb-3">
           <select class="custom-select" name="permissionId">
 UPDATEUSERFORM;
                     $sql = "SELECT * FROM permissions";
                     $result = $conn->query($sql);
-                    while ($city = $result->fetch_assoc()) {
-                        echo "<option value='$city[id]'>$city[permission]</option>";
+                    while ($prem = $result->fetch_assoc()) {
+                        if ($prem["id"] == $user["permissionId"]) {
+                            echo "<option selected value='$prem[id]'>$prem[permission]</option>";
+                        } else {
+                            echo "<option value='$prem[id]'>$prem[permission]</option>";
+                        }
                     }
                     echo <<< UPDATEUSERFORM
           </select>
@@ -121,16 +126,16 @@ UPDATEUSERFORM;
           </div>
         </div>
 
-
+Image
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="image" name="image" value="$user[image]">
+                    <input type="text" class="form-control" placeholder="Image" name="image" value="$user[image]">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-icons"></span>
                         </div>
                     </div>
                 </div>
-
+Birthday
                 <div class="input-group mb-3">
                     <input type="date" class="form-control" name="birthday" value="$user[birthday]">
                     <div class="input-group-append">

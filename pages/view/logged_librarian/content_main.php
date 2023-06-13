@@ -3,12 +3,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Admin - Users list</h1>
+                    <h1>Librarian - Book list</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="./logged.php">Home</a></li>
-                        <li class="breadcrumb-item active">Users list</li>
+                        <li class="breadcrumb-item active">Book list</li>
                     </ol>
                 </div>
             </div>
@@ -45,37 +45,37 @@ SUCCESS;
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Email</th>
-                                    <th>First name</th>
-                                    <th>Last name</th>
-                                    <th>Birthday</th>
-                                    <th>Created at</th>
-                                    <th>Permission</th>
-                                    <th>Image</th>
+                                    <th>ISBN</th>
+                                    <th>Title</th>
+                                    <th>Authors</th>
+                                    <th>Publisher</th>
+                                    <th>Published date</th>
+                                    <th>Category</th>
+                                    <th>Pages</th>
                                     <th>Edit / Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 require_once "../../scripts/connect.php";
-                                $stmt = $conn->prepare("SELECT u.id, u.email, u.firstName, u.lastName, u.birthday, u.createdAt, u.image, p.permission FROM users u INNER JOIN permissions p on u.permissionId = p.id");
+                                $stmt = $conn->prepare("SELECT * FROM books");
                                 $stmt->execute();
                                 $result = $stmt->get_result();
-                                while ($user = $result->fetch_assoc()) {
+                                while ($book = $result->fetch_assoc()) {
                                     echo <<< USER
                       <tr>
-                        <td>$user[email]</td>
-                        <td>$user[firstName]</td>
-                        <td>$user[lastName]</td>
-                        <td>$user[birthday]</td>
-                        <td>$user[createdAt]</td>
-                        <td>$user[permission]</td>
-                        <td>$user[image]</td>
+                        <td>$book[isbn]</td>
+                        <td>$book[title]</td>
+                        <td>$book[authors]</td>
+                        <td>$book[publisher]</td>
+                        <td>$book[published_date]</td>
+                        <td>$book[category]</td>
+                        <td>$book[pages]</td>
                         <td>
-                        <form class=chatForm action=./logged_admin/update_user_tmp.php method=post>
-                        <button type=submit name=editUserId value=$user[id]>Edit</button>
-                        </form><form class=declineForm action=../../scripts/delete_user.php method=post>
-                        <button type=submit name=deletedUserId value=$user[id]>Delete</button>
+                        <form class=chatForm action=./logged_librarian/update_book_tmp.php method=post>
+                        <button type=submit name=editBookIsbn value=$book[isbn]>Edit</button>
+                        </form><form class=declineForm action=../../scripts/delete_book.php method=post>
+                        <button type=submit name=deletedBookIsbn value=$book[isbn]>Delete</button>
                         </form>
                         </td>
                       </tr>

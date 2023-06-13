@@ -33,6 +33,7 @@ ERROR;
             <p class="login-box-msg">Register a new membership</p>
 
             <form action="../scripts/register_user.php" method="post">
+                First name
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="First name" name="firstName">
                     <div class="input-group-append">
@@ -41,7 +42,7 @@ ERROR;
                         </div>
                     </div>
                 </div>
-
+                Last name
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Last name" name="lastName">
                     <div class="input-group-append">
@@ -50,7 +51,7 @@ ERROR;
                         </div>
                     </div>
                 </div>
-
+                Email
                 <div class="input-group mb-3">
                     <input type="email" class="form-control" placeholder="Email" name="email">
                     <div class="input-group-append">
@@ -59,7 +60,7 @@ ERROR;
                         </div>
                     </div>
                 </div>
-
+                Email (confirm)
                 <div class="input-group mb-3">
                     <input type="email" class="form-control" placeholder="Email (confirm)" name="re-email">
                     <div class="input-group-append">
@@ -68,7 +69,7 @@ ERROR;
                         </div>
                     </div>
                 </div>
-
+                Password
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" placeholder="Password" name="password">
                     <div class="input-group-append">
@@ -77,7 +78,7 @@ ERROR;
                         </div>
                     </div>
                 </div>
-
+                Password (confirm)
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" placeholder="Password (confirm)" name="re-password">
                     <div class="input-group-append">
@@ -86,7 +87,7 @@ ERROR;
                         </div>
                     </div>
                 </div>
-
+                Birthday
                 <div class="input-group mb-3">
                     <input type="date" class="form-control" name="birthday">
                     <div class="input-group-append">
