@@ -2,6 +2,12 @@
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("location: ../pages/forgot-password.php");
 }
+session_start();
+if(empty($_POST["email"])){
+    $_SESSION["error"] = "Fill all fields!";
+    echo "<script>history.back();</script>";
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

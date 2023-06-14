@@ -1,13 +1,15 @@
 .chatForm {
     float: left;
 }
+
 .chatForm, .declineForm {
     display: inline-block; /* or inline */
 }
 
-.chatForm_1{
+.chatForm_1 {
     width: 100%;
 }
+
 .users-list-my {
     padding-left: 0;
     list-style: none;
@@ -15,7 +17,7 @@
     flex-wrap: wrap;
 }
 
-.users-list-my>li {
+.users-list-my > li {
     padding: 10px;
     text-align: center;
     width: 25%;
@@ -25,14 +27,14 @@
     align-items: center;
 }
 
-.users-list-my>li img {
+.users-list-my > li img {
     border-radius: 10%;
     height: auto;
     max-width: 100%;
 }
 
-.users-list-my>li>a:hover,
-.users-list-my>li>a:hover .users-list-name-my {
+.users-list-my > li > a:hover,
+.users-list-my > li > a:hover .users-list-name-my {
     color: #999;
 }
 
@@ -58,4 +60,49 @@
 
 .dark-mode .users-list-date-my {
     color: #adb5bd;
+}
+
+.container {
+    display: flex;
+}
+
+.column {
+    flex: 1;
+}
+
+.column-left {
+    flex: 95;
+}
+
+.column-right {
+    flex: 5;
+}
+
+.dropdown-item-text-red-my {
+    display: block;
+    padding: .25rem 1rem;
+    color: red;
+    text-decoration: none;
+    outline: none;
+}
+.dropdown-item-text-red-my:hover {
+    color: red;
+}
+
+.first-column {
+    width: 175px;
+    padding: 5px;
+}
+
+table td.first-column:first-child {
+    width: 175px;
+}
+
+table td {
+    border: none;
+}
+
+.font-my{
+    font-size: 100px;
+    font-weight: bold;
 }

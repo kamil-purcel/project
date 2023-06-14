@@ -43,7 +43,7 @@ if (isset($_SESSION["logged"]["lastActivity"])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Library - Contact us</title>
+    <title>Library - Cart</title>
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -60,7 +60,7 @@ if (isset($_SESSION["logged"]["lastActivity"])) {
     require_once "./$permissionId/navbar.php";
     require_once "./$permissionId/aside.php";
 
-    require_once "./universal/content_contact-us.php";
+    require_once "./logged_user/content-cart.php";
 
     require_once "./footer.php";
     ?>

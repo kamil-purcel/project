@@ -16,9 +16,6 @@ if (!isset($_SESSION["logged"]) || session_status() != 2) {
             $permissionId = "logged_admin";
             break;
     }
-    if (isset($_SESSION["editUserId"])) {
-        unset($_SESSION["editUserId"]);
-    }
 }
 
 if (isset($_SESSION["logged"]["lastActivity"])) {
@@ -43,7 +40,7 @@ if (isset($_SESSION["logged"]["lastActivity"])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Library - Dashboard</title>
+    <title>Library - Logs</title>
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">

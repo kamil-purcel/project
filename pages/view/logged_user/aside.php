@@ -31,7 +31,6 @@ if (!isset($_SESSION["logged"]) || session_status() != 2) {
                     <a href="./logged.php" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Books</p>
-                        <i class="right fas fa-angle-left"></i>
                     </a>
                 </li>
                 <li class="nav-item">

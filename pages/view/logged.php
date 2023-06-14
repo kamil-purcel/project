@@ -22,6 +22,9 @@ if (!isset($_SESSION["logged"]) || session_status() != 2) {
     if (isset($_SESSION["editBookIsbn"])) {
         unset($_SESSION["editBookIsbn"]);
     }
+    if (isset($_SESSION["isbn"])) {
+        unset($_SESSION["isbn"]);
+    }
 }
 
 if (isset($_SESSION["logged"]["lastActivity"])) {
@@ -32,6 +35,9 @@ if (isset($_SESSION["logged"]["lastActivity"])) {
     if ($currentTime - $lastActivityTime > $sessionTimeout) {
         $_SESSION["error"] = "Session has expired!";
         unset($_SESSION["logged"]);
+        if (isset($_SESSION["cart"])) {
+            unset($_SESSION["cart"]);
+        }
         header("location: ../");
         exit();
     }

@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($result->num_rows != 0) {
             if (password_verify($_POST["password"], $user["password"])) {
+                $_SESSION["logged"]["id"] = $user["id"];
                 $_SESSION["logged"]["firstName"] = $user["firstName"];
                 $_SESSION["logged"]["lastName"] = $user["lastName"];
                 $_SESSION["logged"]["permissionId"] = $user["permissionId"];

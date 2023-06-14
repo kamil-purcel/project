@@ -28,7 +28,7 @@ if (isset($_SESSION["logged"]["lastActivity"])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Library - Update user</title>
+    <title>Library - Update book</title>
     <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
 </head>
@@ -49,7 +49,7 @@ ERROR;
 
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <h1><b>Edit user</b></h1>
+            <h1><b>Edit book</b></h1>
         </div>
         <div class="card-body">
 

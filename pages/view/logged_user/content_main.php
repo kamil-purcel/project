@@ -52,15 +52,24 @@ SUCCESS;
                                         <li>
                                         <img src=../../dist/img/covers/$item[image] alt=Book Image>
                                         <br>
-                                        <a class=users-list-name-my href=#><h6>$item[title]</h6></a>
+                                        <a class=users-list-name-my href="#" onclick=sendValue('$item[isbn]')><h6>$item[title]</h6></a>
+                                        <form id=myFormToSent action=./logged_user/e-commerce_tmp.php method=POST>
+                                         <input type=hidden id=hiddenInput name=isbn value=>
+                                           </form>
                                         <span class=users-list-date-my>$item[authors]</span>
-                                        <form class=chatForm_1 action=./logs.php method=post>
-                                        <button type="submit" value=$item[isbn] class="btn btn-primary btn-block">Add to cart</button>
+                                        <form class=chatForm_1 action=../../scripts/cart_check.php method=post>
+                                        <button type="submit" name="isbn" value=$item[isbn] class="btn btn-primary btn-block">Add to cart</button>
                                         </form>
                                         </li>
 BOOKS;
                                 }
                                 ?>
+                                <script>
+                                    function sendValue(isbn) {
+                                        document.getElementById('hiddenInput').value = isbn;
+                                        document.getElementById('myFormToSent').submit();
+                                    }
+                                </script>
                             </ul>
                         </div>
                     </div>
