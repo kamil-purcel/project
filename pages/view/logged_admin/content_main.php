@@ -73,9 +73,9 @@ SUCCESS;
                         <td>$user[image]</td>
                         <td>
                         <form class=chatForm action=./logged_admin/update_user_tmp.php method=post>
-                        <button type=submit name=editUserId value=$user[id]>Edit</button>
-                        </form><form class=declineForm action=../../scripts/delete_user.php method=post>
-                        <button type=submit name=deletedUserId value=$user[id]>Delete</button>
+                        <button type=submit name=editUserId value=$user[id] class="btn btn-secondary btn-sm">Edit</button>
+                        </form> &nbsp; <form class=declineForm action=../../scripts/delete_user.php method=post>
+                        <button type=submit name=deletedUserId value=$user[id] class="btn btn-secondary btn-sm">Delete</button>
                         </form>
                         </td>
                       </tr>

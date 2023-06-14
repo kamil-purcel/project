@@ -3,12 +3,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Librarian - Book list</h1>
+                    <h1>User - Rental history</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="./logged.php">Home</a></li>
-                        <li class="breadcrumb-item active">Book list</li>
+                        <li class="breadcrumb-item active">Rental history</li>
                     </ol>
                 </div>
             </div>
@@ -35,7 +35,6 @@ SUCCESS;
         unset($_SESSION["success"]);
     }
     ?>
-
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -45,39 +44,36 @@ SUCCESS;
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>ISBN</th>
                                     <th>Title</th>
                                     <th>Authors</th>
-                                    <th>Publisher</th>
-                                    <th>Published date</th>
-                                    <th>Category</th>
-                                    <th>Pages</th>
-                                    <th>Edit / Delete</th>
+                                    <th>Accept</th>
+                                    <th>Rental date</th>
+                                    <th>Return date</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 require_once "../../scripts/connect.php";
-                                $stmt = $conn->prepare("SELECT * FROM books");
+                                $stmt = $conn->prepare("SELECT b.title, b.authors, ri.rentalDate, ri.returnDate, ri.accept FROM rental r INNER JOIN rental_info ri on r.id = ri.id INNER JOIN books b on ri.isbn = b.isbn  WHERE r.userId = ?");
+                                $stmt->bind_param("i", $_SESSION["logged"]["id"]);
                                 $stmt->execute();
                                 $result = $stmt->get_result();
-                                while ($book = $result->fetch_assoc()) {
+                                while ($log = $result->fetch_assoc()) {
                                     echo <<< USER
                       <tr>
-                        <td>$book[isbn]</td>
-                        <td>$book[title]</td>
-                        <td>$book[authors]</td>
-                        <td>$book[publisher]</td>
-                        <td>$book[published_date]</td>
-                        <td>$book[category]</td>
-                        <td>$book[pages]</td>
-                        <td>
-                        <form class=chatForm action=./logged_librarian/update_book_tmp.php method=post>
-                        <button type=submit name=editBookIsbn value=$book[isbn] class="btn btn-secondary btn-xs">Edit</button>
-                        </form>&nbsp;<form class=declineForm action=../../scripts/delete_book.php method=post>
-                        <button type=submit name=deletedBookIsbn value=$book[isbn] class="btn btn-secondary btn-xs">Delete</button>
-                        </form>
-                        </td>
+                        <td>$log[title]</td>
+                        <td>$log[authors]</td>
+USER;
+                              if(is_null($log["accept"])){
+                                  echo "<td></td>";
+                              }else if($log["accept"] == 1){
+                                  echo "<td>Accepted</td>";
+                              }else{
+                                  echo "<td>Rejected</td>";
+                              }
+                                    echo <<< USER
+                        <td>$log[rentalDate]</td>
+                        <td>$log[returnDate]</td>
                       </tr>
 USER;
                                 }

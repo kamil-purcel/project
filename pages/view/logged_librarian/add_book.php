@@ -127,13 +127,13 @@ ERROR;
                 </div>
                 <div class="row">
                     <div class="col-8">
+                        <a href="../logged.php" class="text-center">Discard changes</a>
                     </div>
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary btn-block">Add</button>
                     </div>
                 </div>
             </form>
-            <a href="../logged.php" class="text-center">Discard changes</a>
 
         </div>
     </div>
