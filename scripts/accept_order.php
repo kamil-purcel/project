@@ -8,6 +8,16 @@ try {
     $stmt->execute();
 
     if ($stmt->affected_rows == 1) {
+
+        $stmt = $conn->prepare("SELECT * FROM rental_info WHERE id = ? and accept is null; ");
+        $stmt->bind_param("i", $_POST["rentalID"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows == 0) {
+            $stmt = $conn->prepare("UPDATE rental SET seen = 1 WHERE id = ?;");
+            $stmt->bind_param("i", $_POST["rentalID"]);
+            $stmt->execute();
+        }
         $_SESSION["success"] = "The order $_POST[rentalID], ISBN: $_POST[rentalISBN] has been accepted";
     } else {
         $_SESSION["error"] = "Failed to accept order!";

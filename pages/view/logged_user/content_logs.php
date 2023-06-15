@@ -44,6 +44,7 @@ SUCCESS;
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
+                                    <th>Order</th>
                                     <th>Title</th>
                                     <th>Authors</th>
                                     <th>Accept</th>
@@ -54,13 +55,14 @@ SUCCESS;
                                 <tbody>
                                 <?php
                                 require_once "../../scripts/connect.php";
-                                $stmt = $conn->prepare("SELECT b.title, b.authors, ri.rentalDate, ri.returnDate, ri.accept FROM rental r INNER JOIN rental_info ri on r.id = ri.id INNER JOIN books b on ri.isbn = b.isbn  WHERE r.userId = ?");
+                                $stmt = $conn->prepare("SELECT r.id, b.title, b.authors, ri.rentalDate, ri.returnDate, ri.accept FROM rental r INNER JOIN rental_info ri on r.id = ri.id INNER JOIN books b on ri.isbn = b.isbn  WHERE r.userId = ?");
                                 $stmt->bind_param("i", $_SESSION["logged"]["id"]);
                                 $stmt->execute();
                                 $result = $stmt->get_result();
                                 while ($log = $result->fetch_assoc()) {
                                     echo <<< USER
                       <tr>
+                      <td>$log[id]</td>
                         <td>$log[title]</td>
                         <td>$log[authors]</td>
 USER;

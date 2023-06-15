@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 15, 2023 at 12:58 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Cze 15, 2023 at 03:29 PM
+-- Wersja serwera: 10.4.28-MariaDB
+-- Wersja PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `books`
+-- Struktura tabeli dla tabeli `books`
 --
 
 CREATE TABLE `books` (
@@ -181,7 +181,7 @@ INSERT INTO `books` (`isbn`, `title`, `authors`, `publisher`, `published_date`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logs`
+-- Struktura tabeli dla tabeli `logs`
 --
 
 CREATE TABLE `logs` (
@@ -479,12 +479,63 @@ INSERT INTO `logs` (`id`, `userId`, `email`, `status`, `IPAddress`, `createdAt`)
 (286, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-14 22:48:56'),
 (287, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-14 22:49:36'),
 (288, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-14 22:52:57'),
-(289, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-14 22:55:08');
+(289, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-14 22:55:08'),
+(290, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-14 23:00:08'),
+(291, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-14 23:00:51'),
+(292, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-14 23:01:04'),
+(293, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-14 23:01:27'),
+(294, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-14 23:01:35'),
+(295, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-14 23:02:13'),
+(296, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-14 23:02:31'),
+(297, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-14 23:02:51'),
+(298, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-14 23:03:06'),
+(299, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:18:17'),
+(300, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:18:38'),
+(301, 3, 'admin@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:19:10'),
+(302, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:19:56'),
+(303, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:20:27'),
+(304, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:21:41'),
+(305, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:32:39'),
+(306, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:35:55'),
+(307, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:38:37'),
+(308, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:42:42'),
+(309, 32, 'user@user.user', 1, '127.0.0.1', '2023-06-15 09:43:22'),
+(310, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:44:13'),
+(311, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:45:58'),
+(312, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:46:31'),
+(313, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:47:00'),
+(314, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:49:35'),
+(315, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 09:54:39'),
+(316, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:03:24'),
+(317, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:05:13'),
+(318, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:10:17'),
+(319, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:12:32'),
+(320, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:18:36'),
+(321, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:18:42'),
+(322, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:18:52'),
+(323, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:21:47'),
+(324, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:25:02'),
+(325, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:25:15'),
+(326, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:30:18'),
+(327, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:32:05'),
+(328, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:33:00'),
+(329, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:33:17'),
+(330, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:34:24'),
+(331, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:35:19'),
+(332, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:36:24'),
+(333, 31, 'librarian@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:36:29'),
+(334, 3, 'admin@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:36:33'),
+(335, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:36:37'),
+(336, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:38:35'),
+(337, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:40:55'),
+(338, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:44:59'),
+(339, 5, 'user@wsb.pl', 1, '127.0.0.1', '2023-06-15 10:48:23'),
+(340, 33, 'tmp@tMp.pl1', 3, '127.0.0.1', '2023-06-15 13:09:58');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logs_type`
+-- Struktura tabeli dla tabeli `logs_type`
 --
 
 CREATE TABLE `logs_type` (
@@ -511,7 +562,7 @@ INSERT INTO `logs_type` (`id`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permissions`
+-- Struktura tabeli dla tabeli `permissions`
 --
 
 CREATE TABLE `permissions` (
@@ -531,26 +582,31 @@ INSERT INTO `permissions` (`id`, `permission`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rental`
+-- Struktura tabeli dla tabeli `rental`
 --
 
 CREATE TABLE `rental` (
   `id` int(10) NOT NULL,
-  `userId` int(10) NOT NULL
+  `userId` int(10) NOT NULL,
+  `seen` tinyint(1) NOT NULL DEFAULT 0,
+  `userSeen` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `rental`
 --
 
-INSERT INTO `rental` (`id`, `userId`) VALUES
-(10, 5),
-(11, 32);
+INSERT INTO `rental` (`id`, `userId`, `seen`, `userSeen`) VALUES
+(1, 5, 1, 1),
+(2, 5, 1, 0),
+(3, 5, 1, 1),
+(4, 5, 0, 0),
+(5, 5, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rental_info`
+-- Struktura tabeli dla tabeli `rental_info`
 --
 
 CREATE TABLE `rental_info` (
@@ -566,14 +622,20 @@ CREATE TABLE `rental_info` (
 --
 
 INSERT INTO `rental_info` (`id`, `isbn`, `rentalDate`, `returnDate`, `accept`) VALUES
-(10, '9789391019310', '2023-06-14', '2023-06-15', 1),
-(10, '9789391030070', '2023-06-14', NULL, 0),
-(11, '9789391030353', '2023-06-14', '2023-06-15', 1);
+(1, '9789391019310', '2023-06-15', NULL, 0),
+(1, '9789391030070', '2023-06-15', NULL, 0),
+(1, '9789391030087', '2023-06-15', '2023-06-15', 1),
+(2, '9789391030353', '2023-06-15', NULL, 0),
+(3, '9789391030070', '2023-06-15', NULL, 1),
+(3, '9789391019310', '2023-06-15', NULL, 0),
+(4, '9789391030087', '2023-06-15', NULL, 1),
+(4, '9789391030353', '2023-06-15', NULL, 1),
+(5, '9789391184735', '2023-06-15', NULL, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktura tabeli dla tabeli `users`
 --
 
 CREATE TABLE `users` (
@@ -596,20 +658,21 @@ INSERT INTO `users` (`id`, `permissionId`, `email`, `firstName`, `lastName`, `bi
 (3, 3, 'admin@wsb.pl', 'Admin', 'Adminek', '2023-06-10', '$2y$10$LWJ0ofmV1rWVZmZL7I28h.slQjUoqbAmOH1GcT4eCjhaeO9KXfrnq', '2023-06-10 22:10:20', '2.jpg'),
 (5, 1, 'user@wsb.pl', 'User', 'Userek', '2023-06-10', '$2y$10$TTsftg/N2VtGJmTAlzo7QOr.rH3rLXlQeY./kHOsXxSMXD7eqkExm', '2023-06-10 22:25:07', '5.jpg'),
 (31, 2, 'librarian@wsb.pl', 'Librarian', 'Lib', '2230-03-12', '$2y$10$5K9OabMh1p/o284L7XRPW.he1v.jEJGww552jaMEPnU9JzH0/yfSu', '2023-06-13 19:54:25', '6.jpg'),
-(32, 1, 'user@user.user', 'tmp', 'tmp', '2023-11-11', '$2y$10$4f9R1A7aZ0ZvmuORsF0lK.vjqaB6QdBRobgyGybjGI0hGVKzakevy', '2023-06-14 23:54:52', '3.jpg');
+(32, 1, 'user@user.user', 'tmp', 'tmp', '2023-11-11', '$2y$10$4f9R1A7aZ0ZvmuORsF0lK.vjqaB6QdBRobgyGybjGI0hGVKzakevy', '2023-06-14 23:54:52', '3.jpg'),
+(33, 1, 'tmp@tMp.pl1', 'fdsaf', 'fadsf', '0001-11-11', '$2y$10$oiWm5ELht6qzVWBSFfNySOt18.Tv3G3NojrlStdylU6xcXOCTbLEq', '2023-06-15 15:09:58', NULL);
 
 --
--- Indexes for dumped tables
+-- Indeksy dla zrzutów tabel
 --
 
 --
--- Indexes for table `books`
+-- Indeksy dla tabeli `books`
 --
 ALTER TABLE `books`
   ADD PRIMARY KEY (`isbn`);
 
 --
--- Indexes for table `logs`
+-- Indeksy dla tabeli `logs`
 --
 ALTER TABLE `logs`
   ADD PRIMARY KEY (`id`),
@@ -617,25 +680,25 @@ ALTER TABLE `logs`
   ADD KEY `status` (`status`);
 
 --
--- Indexes for table `logs_type`
+-- Indeksy dla tabeli `logs_type`
 --
 ALTER TABLE `logs_type`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `permissions`
+-- Indeksy dla tabeli `permissions`
 --
 ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `rental`
+-- Indeksy dla tabeli `rental`
 --
 ALTER TABLE `rental`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeksy dla tabeli `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -649,7 +712,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=290;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=341;
 
 --
 -- AUTO_INCREMENT for table `logs_type`
@@ -667,13 +730,13 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `rental`
 --
 ALTER TABLE `rental`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Constraints for dumped tables
