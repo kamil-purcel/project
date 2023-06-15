@@ -28,8 +28,8 @@ if ($error != 0) {
 }
 
 try {
-    $stmt = $conn->prepare("INSERT INTO books (isbn, title, authors, publisher, published_date, category, pages, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
-    $stmt->bind_param("ssssssss", $_POST["isbn"], $_POST["title"], $_POST["authors"], $_POST["publisher"], $_POST["published_date"], $_POST["category"], $_POST["pages"], $_POST["image"]);
+    $stmt = $conn->prepare("INSERT INTO books (isbn, title, authors, publisher, published_date, category, pages, image, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+    $stmt->bind_param("sssssssss", $_POST["isbn"], $_POST["title"], $_POST["authors"], $_POST["publisher"], $_POST["published_date"], $_POST["category"], $_POST["pages"], $_POST["image"], $_POST["description"]);
     $stmt->execute();
 
     if ($stmt->affected_rows == 1) {

@@ -30,8 +30,8 @@ if ($error != 0) {
 
 
 try {
-    $stmt = $conn->prepare("UPDATE books SET isbn = ?, title = ?, authors = ?, publisher = ?, published_date = ?, category = ?, pages = ?, image = ? WHERE isbn = $_SESSION[editBookIsbn];");
-    $stmt->bind_param("ssssssss", $_POST["isbn"], $_POST["title"], $_POST["authors"], $_POST["publisher"], $_POST["published_date"], $_POST["category"], $_POST["pages"], $_POST["image"]);
+    $stmt = $conn->prepare("UPDATE books SET isbn = ?, title = ?, authors = ?, publisher = ?, published_date = ?, category = ?, pages = ?, image = ?, description = ? WHERE isbn = $_SESSION[editBookIsbn];");
+    $stmt->bind_param("sssssssss", $_POST["isbn"], $_POST["title"], $_POST["authors"], $_POST["publisher"], $_POST["published_date"], $_POST["category"], $_POST["pages"], $_POST["image"], $_POST["description"]);
     $stmt->execute();
 
     if ($stmt->affected_rows == 1) {

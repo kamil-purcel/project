@@ -140,6 +140,15 @@ Image
                         </div>
                     </div>
                 </div>
+                Description
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Description" name="description" value="$book[description]">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-icons"></span>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-8">
