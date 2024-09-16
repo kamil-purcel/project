@@ -28,7 +28,7 @@ ERROR;
             <a href="./index.php" class="h1"><b>Library</b></a>
         </div>
         <div class="card-body">
-            <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
+            <p class="login-box-msg">You forgot your password? If yes just press the button...</p>
             <form action="recover-password.php" method="post">
                 <div class="input-group mb-3">
                     <input type="email" class="form-control" placeholder="Email" name="email">
